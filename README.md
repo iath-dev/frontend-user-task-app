@@ -27,7 +27,7 @@ git clone https://github.com/inetum/user-task-manager.git
 2. Instalar dependencias
 
 ```bash
-npm install
+npm install --legacy-peer-deps
 ```
 
 3. Configurar variables de entorno
