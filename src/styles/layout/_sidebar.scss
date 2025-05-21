@@ -1,0 +1,68 @@
+// Estilos específicos para el sidebar
+.sidebar {
+  .user-list {
+    list-style: none;
+    height: calc(100% - 4rem);
+    overflow-y: auto;
+    padding-right: 0.5rem;
+
+    .user-item {
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: var(--border-radius);
+      transition: all 0.2s ease;
+
+      @media (max-width: 768px) {
+        padding: 0.75rem;
+      }
+
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      & > div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1;
+      }
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      button {
+        max-width: 64px;
+        padding: 2px 4px;
+        border-color: $primary-color;
+        color: $primary-color;
+        font-weight: 500;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: all 0.15s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+
+        &:hover {
+          background-color: $accent-color;
+          border-color: $accent-color;
+          color: #fff;
+        }
+      }
+
+      &:hover {
+        background-color: rgba($primary-color, 0.1);
+      }
+
+      &.active {
+        background-color: $primary-color;
+        color: $text-color;
+
+        button {
+          background-color: $text-color;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}

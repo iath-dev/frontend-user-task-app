@@ -2,7 +2,6 @@
 
 import { ReactNode, useState } from 'react';
 import UserList from './UserList';
-import '../styles/layout.scss';
 
 interface LayoutProps {
   children: ReactNode;

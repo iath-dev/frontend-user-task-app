@@ -1,0 +1,8 @@
+// Estilos específicos para la página home
+.page {
+  padding: 2rem;
+
+  @include responsive(mobile) {
+    padding: 1rem;
+  }
+}

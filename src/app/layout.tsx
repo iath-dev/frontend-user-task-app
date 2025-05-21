@@ -3,6 +3,7 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 import Layout from '../components/Layout';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import '../styles/globals.scss';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

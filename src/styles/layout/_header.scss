@@ -1,0 +1,29 @@
+// Estilos específicos para el header
+.header {
+  height: $header-height;
+  padding: 0 2rem;
+  background-color: $background-color;
+  border-bottom: 1px solid rgba($secondary-color, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h1 {
+    color: $primary-color;
+    font-size: 1.5rem;
+  }
+
+  button.menu-toggle {
+    display: none;
+    background: $background-color;
+    color: $text-color;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+}
