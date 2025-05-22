@@ -1,7 +1,6 @@
 'use client';
 
 import { ReactNode, useState } from 'react';
-import UserList from './UserList';
 
 interface LayoutProps {
   children: ReactNode;
@@ -23,7 +22,6 @@ export default function Layout({ children }: LayoutProps) {
       </header>
       <div className="main-container">
         <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
-          <UserList />
         </aside>
         <main className="content">
           <div className="user-details">{children}</div>

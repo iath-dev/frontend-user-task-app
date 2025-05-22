@@ -2,9 +2,11 @@ import { useUserTasks } from '@/hooks/useUserTasks';
 import { useUserStore } from '@/store/userStore';
 import { UserTask } from '@/types/userTask.types';
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import TaskItem from './TaskItem';
 
 const UserInfo = () => {
+    const router = useRouter();
     const user = useUserStore((state) => state.selectedUser);
     const { data: tasks, isLoading } = useUserTasks(user?.id)
     const [localTasks, setLocalTasks] = useState<UserTask[]>([]);
@@ -12,6 +14,12 @@ const UserInfo = () => {
     useEffect(() => {
       if (tasks) setLocalTasks(tasks);
     }, [tasks])
+
+    useEffect(() => {
+      if (!user) {
+        router.push('/');
+      }
+    }, [user, router]);
 
     const handleToggleTask = (taskId: number) => {
       setLocalTasks(prevTasks =>
@@ -21,7 +29,7 @@ const UserInfo = () => {
       );
     };
 
-    if (!user) return <p>Selecciona un usuario</p>
+    if (!user) return null;
     if (isLoading) return <p>Cargando...</p>
 
     const completedTasks = localTasks.filter(task => task.completed).length || 0;
