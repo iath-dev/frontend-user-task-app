@@ -1,6 +1,7 @@
 'use client';
 
 import { Table, TableColumn } from '@/components/Table';
+import { TableRow } from '@/components/TableRow';
 import { useUsers } from '@/hooks/useUsers';
 
 export default function Home() {
@@ -21,7 +22,7 @@ export default function Home() {
 
   return (
     <div className="page">
-      <Table data={users || []} columns={columns}  />
+      <Table data={users || []} columns={columns} rowComponent={(user) => <TableRow key={user.id} user={user} />}  />
     </div>
   );
 }

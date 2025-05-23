@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { TableRow } from './TableRow';
-import { User } from '@/types/user.types';
 
 export interface TableColumn {
   key: string;
@@ -8,17 +6,19 @@ export interface TableColumn {
   align?: 'left' | 'center' | 'right';
 }
 
-interface TableProps {
-  data: User[];
+interface TableProps<T> {
+  data: T[];
   columns: TableColumn[];
   itemsPerPage?: number;
+  rowComponent: (item: T) => React.ReactNode;
 }
 
-export const Table: React.FC<TableProps> = ({
+export const Table = <T,>({
   data,
   columns,
   itemsPerPage = 5,
-}) => {
+  rowComponent,
+}: TableProps<T>) => {
   const [currentPage, setCurrentPage] = useState(1);
   
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -40,12 +40,7 @@ export const Table: React.FC<TableProps> = ({
           </tr>
         </thead>
         <tbody>
-          {currentItems.map((item) => (
-            <TableRow 
-              key={`${item.id}`} 
-              user={item}
-            />
-          ))}
+          {currentItems.map((item) => rowComponent(item))}
         </tbody>
       </table>
       
@@ -54,6 +49,7 @@ export const Table: React.FC<TableProps> = ({
           <button 
             onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
+            data-testid="previous-button"
           >
             Anterior
           </button>
@@ -61,6 +57,7 @@ export const Table: React.FC<TableProps> = ({
           <button 
             onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
+            data-testid="next-button"
           >
             Siguiente
           </button>
