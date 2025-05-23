@@ -13,7 +13,8 @@ export default function TaskItem({ task, onToggle }: TaskItemProps) {
     <li key={task.id} className={task.completed ? 'completed' : ''}>
       <input 
         type="checkbox" 
-        checked={task.completed} 
+        checked={task.completed}
+        data-testid={`task-${task.id}`}
         onChange={() => onToggle(task.id)} 
       />
       <span>{task.title}</span>

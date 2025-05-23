@@ -21,7 +21,7 @@ export const TableRow: React.FC<TableRowProps> = ({ user }) => {
       <td>{user.name}</td>
       <td>{user.email}</td>
       <td style={{ textAlign: 'center' }}>
-        <button onClick={handleClick}>Ver tareas</button>
+        <button onClick={handleClick} data-testid="view-task">Ver tareas</button>
       </td>
     </tr>
   );

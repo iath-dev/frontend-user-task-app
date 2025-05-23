@@ -7,9 +7,11 @@ import TaskItem from './TaskItem';
 
 const UserInfo = () => {
     const router = useRouter();
-    const user = useUserStore((state) => state.selectedUser);
+    const { selectedUser: user } = useUserStore(state => state);
     const { data: tasks, isLoading } = useUserTasks(user?.id)
     const [localTasks, setLocalTasks] = useState<UserTask[]>([]);
+
+    console.log({user});
 
     useEffect(() => {
       if (tasks) setLocalTasks(tasks);
@@ -38,12 +40,12 @@ const UserInfo = () => {
     return (
         <div className="user-info">
             <div className="user-avatar">
-                <div className="avatar-placeholder">
-                    {user.name.charAt(0).toUpperCase()}
+                <div className="avatar-placeholder" data-testid="avatar">
+                    {user.name.slice(0, 2).toUpperCase()}
                 </div>
             </div>
             <div className="user-details">
-                <h2>{user.name}</h2>
+                <h2 data-testid="user-name">{user.name}</h2>
                 <p>{user.email}</p>
                 <p>{user.phone}</p>
                 <p>{user.company.name}</p>

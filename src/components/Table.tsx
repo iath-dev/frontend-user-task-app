@@ -30,7 +30,7 @@ export const Table = <T,>({
   return (
     <div className="table-container">
       <table className="table-content">
-        <thead>
+        <thead data-testid="table-header">
           <tr>
             {columns.map((column) => (
               <th key={column.key} style={{ textAlign: column.align || 'left' }}>
@@ -39,7 +39,7 @@ export const Table = <T,>({
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody data-testid='table-body'>
           {currentItems.map((item) => rowComponent(item))}
         </tbody>
       </table>
@@ -49,7 +49,7 @@ export const Table = <T,>({
           <button 
             onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            data-testid="previous-button"
+            data-testid="prev-button"
           >
             Anterior
           </button>
