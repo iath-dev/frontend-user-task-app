@@ -14,18 +14,20 @@ interface TableRowProps {
 export const TableRow: React.FC<TableRowProps> = ({ user }) => {
   const setUser = useUserStore((state) => state.setUser);
   const router = useRouter();
-  
+
   const handleClick = () => {
     setUser(user);
     router.push(`/${user.id}`);
   };
-  
+
   return (
     <tr>
       <td>{user.name}</td>
       <td>{user.email}</td>
       <td style={{ textAlign: 'center' }}>
-        <button onClick={handleClick} data-testid="view-task">Ver tareas</button>
+        <button onClick={handleClick} data-testid="view-task">
+          Ver tareas
+        </button>
       </td>
     </tr>
   );

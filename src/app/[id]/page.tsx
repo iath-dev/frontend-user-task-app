@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import UserInfo from "@/components/UserInfo";
+import UserInfo from '@/components/UserInfo';
 
 export default function Page() {
   return (
     <main className="page">
       <UserInfo />
     </main>
-  )
+  );
 }

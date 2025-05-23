@@ -13,17 +13,16 @@ export default function Layout({ children }: LayoutProps) {
     <div className="layout">
       <header className="header">
         <h1>Gestor de Tareas de Usuario</h1>
-        <button 
+        <button
           className="menu-toggle"
-          name='menu-toggle'
+          name="menu-toggle"
           onClick={() => setSidebarOpen(!sidebarOpen)}
         >
           ☰
         </button>
       </header>
       <div className="main-container">
-        <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`} data-testid='sidebar'>
-        </aside>
+        <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`} data-testid="sidebar"></aside>
         <main className="content">
           <div className="user-details">{children}</div>
         </main>

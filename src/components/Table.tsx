@@ -27,20 +27,15 @@ interface TableProps<T> {
   rowComponent: (item: T) => React.ReactNode;
 }
 
-export const Table = <T,>({
-  data,
-  columns,
-  itemsPerPage = 5,
-  rowComponent,
-}: TableProps<T>) => {
+export const Table = <T,>({ data, columns, itemsPerPage = 5, rowComponent }: TableProps<T>) => {
   const [currentPage, setCurrentPage] = useState(1);
-  
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-  
+
   const totalPages = Math.ceil(data.length / itemsPerPage);
-  
+
   return (
     <div className="table-container">
       <table className="table-content">
@@ -53,23 +48,21 @@ export const Table = <T,>({
             ))}
           </tr>
         </thead>
-        <tbody data-testid='table-body'>
-          {currentItems.map((item) => rowComponent(item))}
-        </tbody>
+        <tbody data-testid="table-body">{currentItems.map((item) => rowComponent(item))}</tbody>
       </table>
-      
+
       {totalPages > 1 && (
         <div className="pagination">
-          <button 
-            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
             data-testid="prev-button"
           >
             Anterior
           </button>
-                    
-          <button 
-            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+
+          <button
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
             data-testid="next-button"
           >
