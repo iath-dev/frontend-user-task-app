@@ -11,11 +11,11 @@ interface TaskItemProps {
 export default function TaskItem({ task, onToggle }: TaskItemProps) {
   return (
     <li key={task.id} className={task.completed ? 'completed' : ''}>
-      <input 
-        type="checkbox" 
+      <input
+        type="checkbox"
         checked={task.completed}
         data-testid={`task-${task.id}`}
-        onChange={() => onToggle(task.id)} 
+        onChange={() => onToggle(task.id)}
       />
       <span>{task.title}</span>
     </li>

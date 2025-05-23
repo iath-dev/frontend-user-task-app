@@ -17,12 +17,16 @@ export default function Home() {
   const columns: TableColumn[] = [
     { key: 'name', label: 'Name' },
     { key: 'email', label: 'Email' },
-    { key: 'tasks', label: 'Tareas', align: 'center' }
+    { key: 'tasks', label: 'Tareas', align: 'center' },
   ];
 
   return (
     <div className="page">
-      <Table data={users || []} columns={columns} rowComponent={(user) => <TableRow key={user.id} user={user} />}  />
+      <Table
+        data={users || []}
+        columns={columns}
+        rowComponent={(user) => <TableRow key={user.id} user={user} />}
+      />
     </div>
   );
 }

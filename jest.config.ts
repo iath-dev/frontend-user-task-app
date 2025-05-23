@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type {Config} from 'jest';
+import type { Config } from 'jest';
 
 const config: Config = {
   // All imported modules in your tests should be mocked automatically
@@ -14,25 +14,20 @@ const config: Config = {
   testEnvironment: 'jsdom',
   transform: {
     '^.+\.(ts|tsx)$': 'ts-jest',
-    '^.+\.(js|jsx)$': 'babel-jest'
+    '^.+\.(js|jsx)$': 'babel-jest',
   },
-  transformIgnorePatterns: [
-    'node_modules/(?!variables/.*)'
-  ],
+  transformIgnorePatterns: ['node_modules/(?!variables/.*)'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    '\.(css|less|scss|sass)$': 'identity-obj-proxy'
+    '\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
-  testMatch: [
-    '**/__tests__/**/*.[jt]s?(x)',
-    '**/?(*.)+(spec|test).[tj]s?(x)'
-  ],
+  testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   globals: {
     'ts-jest': {
-      tsconfig: 'tsconfig.jest.json'
-    }
+      tsconfig: 'tsconfig.jest.json',
+    },
   },
 
   // Stop running tests after `n` failures
