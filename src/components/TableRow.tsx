@@ -3,6 +3,10 @@ import { User } from '@/types/user.types';
 import { useUserStore } from '@/store/userStore';
 import { useRouter } from 'next/navigation';
 
+/**
+ * Propiedades del componente TableRow
+ * @property {User} user - Objeto con los datos del usuario a mostrar
+ */
 interface TableRowProps {
   user: User;
 }

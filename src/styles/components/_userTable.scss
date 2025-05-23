@@ -140,5 +140,9 @@
       }
     }
   
+  @include responsive(mobile) {
+    overflow-x: auto;
+    display: block;
+  }
 }
 

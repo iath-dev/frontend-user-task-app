@@ -3,6 +3,6 @@
   padding: 2rem;
 
   @include responsive(mobile) {
-    padding: 1rem;
+    padding: 0;
   }
 }

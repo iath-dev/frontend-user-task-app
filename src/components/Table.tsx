@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
 
+/**
+ * Define la estructura de una columna de la tabla
+ * @property {string} key - Identificador único de la columna
+ * @property {string} label - Texto a mostrar en el encabezado
+ * @property {'left' | 'center' | 'right'} [align] - Alineación del contenido (opcional)
+ */
 export interface TableColumn {
   key: string;
   label: string;
   align?: 'left' | 'center' | 'right';
 }
 
+/**
+ * Propiedades del componente Table
+ * @template T - Tipo de los elementos de datos
+ * @property {T[]} data - Array de datos a mostrar
+ * @property {TableColumn[]} columns - Configuración de columnas
+ * @property {number} [itemsPerPage=5] - Número de elementos por página (opcional)
+ * @property {(item: T) => React.ReactNode} rowComponent - Componente para renderizar cada fila
+ */
 interface TableProps<T> {
   data: T[];
   columns: TableColumn[];
